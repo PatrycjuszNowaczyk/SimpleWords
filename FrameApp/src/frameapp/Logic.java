@@ -18,12 +18,12 @@ public class Logic {
         }
         
         else if(isFileLoaded()==true){
-            
             if(text.getText().equals(getAnswerLine())){
                 goodCounter++;
                 }
             else{
                 if(getAnswerLine()==null){
+                    question.setText("THAT'S ALL");
                     System.out.println("End of file");
                 }
                 //Show bad answer message 
@@ -32,7 +32,6 @@ public class Logic {
                 System.out.println(badCounter);
                 UIManager.put("OptionPane.background", new Color(140,70,70));     
                 UIManager.put("OptionPane.messageForeground", new Color(230,240,230));     
-//                UIManager.setLookAndFeel();
                 UIManager.getLookAndFeelDefaults().put("Panel.background", new Color(140,70,70));
                 JOptionPane.showMessageDialog(new JFrame(),
                 getAnswerLine(),
@@ -46,14 +45,17 @@ public class Logic {
             if(getAnswerLine() != null){
             setAnswerLine();
             setQuestionLine();
+            if(getQuestionLine()==null){
+                question.setText("THAT'S ALL");
+            }
+            else{
             question.setText(getQuestionLine());
             System.out.println("Answer is: " + getAnswerLine());
 
                 System.out.println(goodCounter);
             }
-            else{
-                question.setText("THAT'S ALL");
             }
+
         }
     }
     
